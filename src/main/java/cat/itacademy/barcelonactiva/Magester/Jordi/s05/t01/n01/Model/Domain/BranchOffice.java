@@ -10,9 +10,9 @@ public class BranchOffice {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer pk_BranchOfficeID;
+    Integer pk_ID;
 
-    String branchOfficeName;
+    String name;
 
-    String branchOfficeCountry;
+    String country;
 }
