@@ -1,12 +1,19 @@
 package cat.itacademy.barcelonactiva.Magester.Jordi.s05.t01.n01.Controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import cat.itacademy.barcelonactiva.Magester.Jordi.s05.t01.n01.Model.Dto.BranchOfficeDto;
+import cat.itacademy.barcelonactiva.Magester.Jordi.s05.t01.n01.Model.Services.BranchOfficeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/branch-office")
 public class BranchOfficeController {
 
+    @Autowired
+    private BranchOfficeService branchOfficeService;
 
+    @PostMapping("/add")
+    public void add(@RequestBody BranchOfficeDto branchOfficeDto){
+        branchOfficeService.add(branchOfficeDto);
+    }
 }
