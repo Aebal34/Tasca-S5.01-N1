@@ -31,12 +31,11 @@ public class BranchOfficeController {
         return "redirect:/branch-offices";
     }
 
-    @PostMapping("/update")
-    public String update(Model model, BranchOfficeDto branchOfficeDto){
+    @PutMapping("/update")
+    public String update(BranchOfficeDto branchOfficeDto){
 
-        branchOfficeService.add(branchOfficeDto);
-        model.addAttribute("branchOffice", branchOfficeDto);
+        branchOfficeService.update(branchOfficeDto);
 
-        return "form-create";
+        return "redirect:/branch-offices";
     }
 }

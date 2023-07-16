@@ -12,11 +12,11 @@ public interface BranchOfficeService {
 
     ResponseEntity<String> add(BranchOfficeDto branchOfficeDto);
 
-    ResponseEntity<String> update(Integer pk_Id, @RequestParam(required = false) String name, @RequestParam(required = false) String country);
+    ResponseEntity<String> update(BranchOfficeDto branchOfficeDto);
 
     ResponseEntity<String> delete(Integer pk_Id);
 
-    ResponseEntity<BranchOffice> getOne(Integer pk_Id);
+    ResponseEntity<BranchOfficeDto> getOne(Integer pk_Id);
 
     ResponseEntity<List<BranchOfficeDto>> getAll();
 }

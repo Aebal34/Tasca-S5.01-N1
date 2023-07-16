@@ -5,8 +5,10 @@ import cat.itacademy.barcelonactiva.Magester.Jordi.s05.t01.n01.Model.Dto.BranchO
 import cat.itacademy.barcelonactiva.Magester.Jordi.s05.t01.n01.Model.Repositories.BranchOfficeRepository;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,8 +37,17 @@ public class BranchOfficeServiceImpl implements BranchOfficeService{
     }
 
     @Override
-    public ResponseEntity<String> update(Integer pk_Id, String name, String country) {
-        return null;
+    public ResponseEntity<String> update(@RequestParam BranchOfficeDto branchOfficeDto) {
+
+        BranchOffice branchOffice = branchOfficeRepository.findById(branchOfficeDto.getPk_ID()).orElse(null);
+        if(branchOffice != null){
+            branchOffice.setName(branchOfficeDto.getName());
+            branchOffice.setCountry(branchOfficeDto.getCountry());
+            branchOfficeRepository.save(branchOffice);
+            return ResponseEntity.ok("200. Entity updated successfully");
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("404. Entity not found.");
+        }
     }
 
     @Override
@@ -45,8 +56,12 @@ public class BranchOfficeServiceImpl implements BranchOfficeService{
     }
 
     @Override
-    public ResponseEntity<BranchOffice> getOne(Integer pk_Id) {
-        return null;
+    public ResponseEntity<BranchOfficeDto> getOne(Integer pk_Id) {
+
+        BranchOffice branchOffice = branchOfficeRepository.findById(pk_Id).orElse(null);
+        BranchOfficeDto branchOfficeDto = new BranchOfficeDto(branchOffice.getPk_ID(), branchOffice.getName(), branchOffice.getCountry());
+
+        return ResponseEntity.ok(branchOfficeDto);
     }
 
     @Override

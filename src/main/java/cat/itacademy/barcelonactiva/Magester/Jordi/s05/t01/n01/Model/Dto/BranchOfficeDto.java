@@ -1,19 +1,18 @@
 package cat.itacademy.barcelonactiva.Magester.Jordi.s05.t01.n01.Model.Dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Arrays;
 import java.util.List;
 
 @Setter
 @Getter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class BranchOfficeDto {
 
+    @ToString.Exclude
     private List<String> euCountries = Arrays.asList(
             "Germany", "Austria", "Belgium", "Bulgaria", "Cyprus", "Croatia", "Denmark",
             "Slovakia", "Slovenia", "Spain", "Estonia", "Finland", "France", "Greece",
@@ -43,6 +42,15 @@ public class BranchOfficeDto {
         this.name = name;
         this.country = country;
 
+        if(euCountries.contains(country)){
+            this.type = "EU";
+        }else{
+            this.type = "OUTSIDE_EU";
+        }
+    }
+
+    public void setCountry(String country){
+        this.country=country;
         if(euCountries.contains(country)){
             this.type = "EU";
         }else{

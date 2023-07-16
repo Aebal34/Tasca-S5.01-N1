@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="Template/Template :: head">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Branch Office Manager</title>
-</head>
-<body>
-<header th:replace="Template/Template :: header"></header>
-<div class="container">
-  <div class="card">
-    <div class="card-header"></div>
-    <div class="card-body">
-      <form th:action="@{/branch-offices/add}" th:object="${branchOffice}" method="post">
-        <div class="mb-3">
-          <input type="hidden" class="form-control" id="branch-office-id" th:field="*{pk_ID}">
-          <label class="form-label" for="branch-office-name">Name</label>
-          <input type="text" class="form-control" id="branch-office-name" th:field="*{name}">
+  <head th:replace="Template/Template :: head">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Branch Office Manager</title>
+  </head>
+  <body>
+    <header th:replace="Template/Template :: header"></header>
+    <div class="container">
+      <div class="card">
+        <div class="card-header"></div>
+          <div class="card-body">
+            <form th:action="@{/branch-offices/update}" th:object="${branchOffice}" th:method="PUT">
+              <div class="mb-3">
+                <input type="hidden" th:field="*{pk_ID}">
+                <label class="form-label" for="branch-office-name">Name</label>
+                <input type="text" class="form-control" id="branch-office-name" th:field="*{name}">
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="branch-office-country">Country</label>
+                <input type="text" class="form-control" id="branch-office-country" th:field="*{country}">
+              </div>
+              <input type="submit" class="btn btn-primary btn-sm" value="Submit" />
+            </form>
+          </div>
         </div>
-        <div class="mb-3">
-          <label class="form-label" for="branch-office-country">Country</label>
-          <input type="text" class="form-control" id="branch-office-country" th:field="*{country}">
-        </div>
-        <input type="submit" class="btn btn-primary btn-sm" value="Submit" />
-      </form>
+      </div>
     </div>
-  </div>
-</div>
-</div>
-<footer th:replace="Template/Template :: footer"></footer>
-</body>
+    <footer th:replace="Template/Template :: footer"></footer>
+  </body>
 </html>
