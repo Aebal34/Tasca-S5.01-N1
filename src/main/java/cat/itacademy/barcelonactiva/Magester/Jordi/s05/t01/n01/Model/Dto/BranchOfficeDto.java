@@ -38,5 +38,16 @@ public class BranchOfficeDto {
             this.type = "OUTSIDE_EU";
         }
     }
+    public BranchOfficeDto(Integer pk_ID, String name, String country){
+        this.pk_ID=pk_ID;
+        this.name = name;
+        this.country = country;
+
+        if(euCountries.contains(country)){
+            this.type = "EU";
+        }else{
+            this.type = "OUTSIDE_EU";
+        }
+    }
 
 }

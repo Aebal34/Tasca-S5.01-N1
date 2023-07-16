@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -49,7 +50,16 @@ public class BranchOfficeServiceImpl implements BranchOfficeService{
     }
 
     @Override
-    public ResponseEntity<List<BranchOffice>> getAll() {
-        return null;
+    public ResponseEntity<List<BranchOfficeDto>> getAll() {
+
+        List<BranchOffice> branchOffices = branchOfficeRepository.findAll();
+        List<BranchOfficeDto> branchOfficesDto = new ArrayList<>();
+        for(BranchOffice branchOffice : branchOffices){
+            branchOfficesDto.add(new BranchOfficeDto(branchOffice.getPk_ID(),
+                                                        branchOffice.getName(),
+                                                        branchOffice.getCountry()));
+        }
+
+        return ResponseEntity.ok(branchOfficesDto);
     }
 }

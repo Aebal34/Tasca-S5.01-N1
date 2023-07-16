@@ -18,5 +18,5 @@ public interface BranchOfficeService {
 
     ResponseEntity<BranchOffice> getOne(Integer pk_Id);
 
-    ResponseEntity<List<BranchOffice>> getAll();
+    ResponseEntity<List<BranchOfficeDto>> getAll();
 }
