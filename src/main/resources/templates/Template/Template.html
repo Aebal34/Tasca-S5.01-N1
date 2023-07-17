@@ -10,8 +10,8 @@
     <header th:fragment="header">
         <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
             <div class="container-fluid">
-                <a class="navbar-brand">
-                    <img th:src="@{/images/IT-logo.png}" />
+                <a class="navbar-brand" th:href="@{/}">
+                    <img th:src="@{/images/IT-logo.png}" style="width: 200px; height: 50px;" />
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -24,6 +24,10 @@
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/branch-offices}">Branch Offices</a>
                         </li>
+                        <form class="d-flex" role="search" th:action="@{/branch-offices/getOne/{id}}" method="get">
+                            <input style="width:200px;" class="form-control me-2" placeholder="Search" name="id" type="number" value="${pk_ID}">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
                     </ul>
                 </div>
             </div>

@@ -5,16 +5,17 @@
         <title>Branch Offices</title>
     </head>
     <body>
-    <header th:replace="Template/Template :: header"></header>
+    <header th:replace="Template/Template :: header">
+    </header>
         <div class="container">
             <h2>Branch Offices</h2>
         </div>
         <div class="container">
-
-            <a class="btn btn-primary btn-sm" th:href="@{/form-create}"
-               th:text="'New Branch Office'" title="Create new Branch Office">
-            </a>
-
+            <div class="d-inline-block" >
+                <a class="btn btn-primary btn-sm" th:href="@{/form-create}"
+                   th:text="'New Branch Office'" title="Create new Branch Office">
+                </a>
+            </div>
             <table class="table">
                 <thead>
                     <tr>
@@ -35,10 +36,10 @@
                             <div style="display: inline-block;">
                                 <form method="post" th:action="@{/form-update}">
                                     <input type="hidden" name="pk_ID" th:value="${bo.pk_ID}" />
-                                    <button type="submit" class="btn btn-outline-primary"
+                                    <button type="submit" class="btn btn-outline-secondary"
                                             style="background-image: url('/images/edit.png');
                                                    background-size: cover; width: 50px; height: 50px;
-                                                   border: none; outline: none;">
+                                                   border:none;">
                                     </button>
                                 </form>
                             </div>

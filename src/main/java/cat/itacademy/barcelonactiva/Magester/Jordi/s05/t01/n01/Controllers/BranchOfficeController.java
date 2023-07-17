@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -23,6 +24,21 @@ public class BranchOfficeController {
         model.addAttribute("branchOffices", branchOffices);
         return "branch-offices";
     }
+
+    @GetMapping("/getOne/{id}")
+    public String getOne(@RequestParam("id") Integer pk_ID, Model model) {
+
+        List<BranchOfficeDto> branchOffices = new ArrayList<>();
+        branchOffices.add(branchOfficeService.getOne(pk_ID).getBody());
+
+        if(branchOffices.contains(null) || branchOffices.isEmpty()){
+            return "branchOffices";
+        }else{
+            model.addAttribute("branchOffices", branchOffices);
+            return "branch-offices";
+        }
+    }
+
 
     @PostMapping("/add")
     public String add(@ModelAttribute BranchOfficeDto branchOfficeDto){

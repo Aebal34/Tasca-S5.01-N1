@@ -68,9 +68,15 @@ public class BranchOfficeServiceImpl implements BranchOfficeService{
     public ResponseEntity<BranchOfficeDto> getOne(Integer pk_Id) {
 
         BranchOffice branchOffice = branchOfficeRepository.findById(pk_Id).orElse(null);
-        BranchOfficeDto branchOfficeDto = new BranchOfficeDto(branchOffice.getPk_ID(), branchOffice.getName(), branchOffice.getCountry());
-
-        return ResponseEntity.ok(branchOfficeDto);
+        BranchOfficeDto branchOfficeDto = new BranchOfficeDto();
+        if (branchOffice != null) {
+            branchOfficeDto.setPk_ID(branchOffice.getPk_ID());
+            branchOfficeDto.setName(branchOffice.getName());
+            branchOfficeDto.setCountry(branchOffice.getCountry());
+            return ResponseEntity.ok(branchOfficeDto);
+        }else{
+            return ResponseEntity.ofNullable(branchOfficeDto);
+        }
     }
 
     @Override
