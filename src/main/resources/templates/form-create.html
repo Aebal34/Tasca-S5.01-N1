@@ -12,7 +12,7 @@
           <div class="card-body">
             <form th:action="@{/branch-offices/add}" th:object="${branchOffice}" method="post">
               <div class="mb-3">
-                <input type="hidden" class="form-control" id="branch-office-id" th:field="*{pk_ID}">
+                <input type="hidden" th:field="*{pk_ID}">
                 <label class="form-label" for="branch-office-name">Name</label>
                 <input type="text" class="form-control" id="branch-office-name" th:field="*{name}">
               </div>

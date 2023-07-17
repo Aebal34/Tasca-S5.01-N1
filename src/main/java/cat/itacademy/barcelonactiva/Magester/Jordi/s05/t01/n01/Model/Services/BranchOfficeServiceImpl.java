@@ -51,8 +51,17 @@ public class BranchOfficeServiceImpl implements BranchOfficeService{
     }
 
     @Override
-    public ResponseEntity<String> delete(Integer pk_Id) {
-        return null;
+    public ResponseEntity<String> delete(Integer pk_ID) {
+
+        BranchOffice branchOffice = branchOfficeRepository.findById(pk_ID).orElse(null);
+        if(branchOffice != null){
+            System.out.println("En servicio branch office se encuentra");
+            branchOfficeRepository.deleteById(pk_ID);
+            return ResponseEntity.ok("200. Entity removed successfully.");
+        }else{
+            System.out.println("En servicio branch office no se encuentra");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("404. Entity not found");
+        }
     }
 
     @Override

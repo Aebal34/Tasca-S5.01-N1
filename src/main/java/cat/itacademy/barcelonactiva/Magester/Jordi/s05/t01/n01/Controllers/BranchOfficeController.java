@@ -38,4 +38,13 @@ public class BranchOfficeController {
 
         return "redirect:/branch-offices";
     }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") Integer pk_ID){
+
+        System.out.println("En controller el id es "+pk_ID);
+        branchOfficeService.delete(pk_ID);
+
+        return "redirect:/branch-offices";
+    }
 }

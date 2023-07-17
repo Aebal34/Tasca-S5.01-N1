@@ -16,7 +16,7 @@ public interface BranchOfficeService {
 
     ResponseEntity<String> delete(Integer pk_Id);
 
-    ResponseEntity<BranchOfficeDto> getOne(Integer pk_Id);
+    ResponseEntity<BranchOfficeDto> getOne(Integer pk_ID);
 
     ResponseEntity<List<BranchOfficeDto>> getAll();
 }
